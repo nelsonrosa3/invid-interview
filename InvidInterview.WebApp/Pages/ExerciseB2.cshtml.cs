@@ -3,30 +3,31 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InvidInterview.WebApp.Pages;
 
-public class Fibonacci : PageModel
+public class ExerciseB2 : PageModel
 {
-    [FromQuery] public string Length { get; set; } = string.Empty;
     public string ResponseMessage { get; set; } = string.Empty;
+    public string ErrorMessage { get; set; } = string.Empty;
+    [FromQuery] public string Input { get; set; } = string.Empty;
 
     public void OnGet()
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(Length))
+            if (string.IsNullOrWhiteSpace(Input))
             {
-                ResponseMessage = "Length is empty, provide a valid length from 0 to 30.";
+                ErrorMessage = "Please, provide a valid length from 0 to 30.";
                 return;
             }
 
-            if (!int.TryParse(Length, out var length))
+            if (!int.TryParse(Input, out var length))
             {
-                ResponseMessage = "Length must be a number, provide a valid length from 0 to 30.";
+                ErrorMessage = "Please, provide a valid length from 0 to 30.";
                 return;
             }
 
             if (length < 0 || length > 30)
             {
-                ResponseMessage = "provide a valid length from 0 to 30.";
+                ErrorMessage = "Please, provide a valid length from 0 to 30.";
                 return;
             }
 

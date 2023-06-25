@@ -1,0 +1,23 @@
+@page
+@model InvidInterview.WebApp.Pages.ExerciseB1
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<p style="font-family: Arial, sans-serif; color: #666; font-size: 16px;">Enter a number between 1 and 100.</p>
+
+<form style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
+    <input asp-for="Input" style="padding: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc;" placeholder="Ex: 100" />
+    <button type="submit" style="background-color: #105378; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px;">Submit</button>
+</form>
+
+@if (string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <p style="font-family: Arial, sans-serif; color: #666; font-size: 16px;">[@Model.Input] Replacement:</p>
+    <p style="font-family: Arial, sans-serif; color: #666;font-size: 12px;">Answer: @Model.ResponseMessage</p> 
+}
+else
+{
+    <p style="font-family: Arial, sans-serif; color: #666;font-size: 12px;">@Model.ErrorMessage</p>
+}
